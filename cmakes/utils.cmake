@@ -15,8 +15,9 @@ macro(AddLibrary MODULE)
         add_library(${TGT} STATIC IMPORTED GLOBAL)
         set_target_properties(${TGT} PROPERTIES
                 IMPORTED_LOCATION "${ARG_PREFIX}/lib/${CMAKE_STATIC_LIBRARY_PREFIX}${I}${CMAKE_STATIC_LIBRARY_SUFFIX}"
-                INCLUDE_DIRECTORIES ${ARG_PREFIX}/include)
+                INCLUDE_DIRECTORIES ${ARG_PREFIX}/include
+                INTERFACE_INCLUDE_DIRECTORIES ${ARG_PREFIX}/include
+                )
         add_dependencies(${TGT} ${ARG_DEP})
-        include_directories(${ARG_PREFIX}/include)
     endforeach ()
 endmacro(AddLibrary)
